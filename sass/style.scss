@@ -1,0 +1,60 @@
+body {
+    background: aqua;
+    font: 18px 'Gaegu', cursive;
+}
+
+.content {
+    display: flex;
+}
+
+.group {
+    background: #e9e9eb;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.group .header, .group.footer {
+    margin: 5px, 10px;
+}
+
+.group .footer {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.group .card {
+    overflow: hidden;
+    background: white;
+    margin: 10px;
+    width: 300px;
+    height: 200px;
+}
+
+.card-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin:0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-content img {
+    width: 60px;
+    height: 60px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px 0 10px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.footer {
+    margin: 0 10px 10px 10px;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "trello",
+  "version": "1.0.0",
+  "description": "Trello on Vanilla JS",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-sass": "gulp sass",
+    "build-sass:watch": "gulp sass:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliseguliy/trello.git"
+  },
+  "keywords": [
+    "trello",
+    "vanillajs",
+    "es5",
+    "ecmascript5"
+  ],
+  "author": "Alisa Guliy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliseguliy/trello/issues"
+  },
+  "homepage": "https://github.com/aliseguliy/trello#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.1"
+  }
+}
