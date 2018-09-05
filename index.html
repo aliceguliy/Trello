@@ -11,31 +11,43 @@
     <title>Trello</title>
 </head>
 <body>
-    <div class="content">
-        <div class="group">
-            <div class="header">
-                <h1>Title 1</h1>
-                <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+    <div class="page">
+        <header class="main-header">
+            <div class="boards">
+                <img src="./images/trello-mark.png" alt="">
+                <p>Boards</p>
             </div>
-                <div class="card">
-                    <div class="progress">
-                        <progress max="100" value="0"></progress>
-                        <div class="progress-value"></div>
-                        <div class="progress-bg"><div class="progress-bar"></div></div>
-                    </div>
-                    <div class="card-title">
-                        <h2>Title</h2>
-                    </div>
-                    <div class="card-content">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <p id="date"></p>
-                        <img src="./images/carg-img.jpg" alt="">
-                    </div>
-                    
-                </div>
-                <div class="footer" onclick= addCard()> Add card...</div>
+            <form class="form">
+                <input type="search" placeholder="Search...">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </form>
+            <div class="logo">
+                <a href="#"><img src="./images/trello-logo.png"></a>
+            </div>
+            <div class="add-group" onclick = "addGroup()">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+            </div>
+            <div class="user-data">
+                <img src="./images/carg-img.jpg" alt="">
+                <p>User Name</p>
+            </div>
+            <div class="settings">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+        </header> <!-- header end -->
+        <div class="content"> 
+            <div class="group" id="0" ondrop="cardDrop(event)" ondragover="onDragOver(event)">
+              <div class="group-header">
+                  <h1>Group title</h1>
+                  <a class="button" href=""><span></span></a>
+              </div>
+              <div class="group-footer" onclick="addCard('0')"> Add card... </div>  
+            </div>
         </div>
-    </div>    
+        <footer class="main-footer">
+            <!-- scroll -->
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

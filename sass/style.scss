@@ -1,10 +1,60 @@
 body {
-    background: aqua;
+    background: #E1D6C7  ;
+    background-image: url(../images/main.jpg);
+    background-repeat: repeat;
+	background-size: cover;
+	background-position: 50% 50%;
     font: 18px 'Gaegu', cursive;
 }
 
+.page {
+    width: 100%;
+    overflow: hidden;
+
+    .main-header {
+        background: #E1D6C7;
+        opacity: 0.8;
+        width: 100%; 
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .boards {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-data {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+
+            p {
+                margin: 0 0 0 10px;
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+
+    .main-footer {
+        opacity: 0.8;
+    }
+}
+
+
 .content {
     display: flex;
+    width: 100%;
+    overflow: hidden;
 }
 
 .group {
@@ -12,49 +62,206 @@ body {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    border-radius: 3px;
+
+    .group-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 10px 0 10px;
+    
+        h1 {
+            margin: 0;
+        }
+    }
+
+    .card {
+        overflow: hidden;
+        background: white;
+        margin: 10px;
+        width: 300px;
+        height: 100px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+        border-radius: 3px;
+    
+        h2 {
+            margin: 0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .drop-card {
+                cursor: pointer;
+            }
+        }
+
+        .info {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h2 {
+                margin: 0;
+            }
+
+            .relevance {
+                width: 45px;
+                height: 10px;
+                border-radius: 5px;
+                background: #0AA023;
+            }
+        }
+
+        .card-content {
+            display: flex;
+            flex-wrap: wrap;
+            margin:0;
+            justify-content: space-between;
+            align-items: center;
+        
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .group-footer {
+        opacity: 0.5;
+        cursor: pointer;
+        margin: 0 10px 10px 10px;
+    }
 }
 
-.group .header, .group.footer {
-    margin: 5px, 10px;
+
+
+
+
+// progress bar
+.progress {
+  width: 70%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
-.group .footer {
-    opacity: 0.5;
-    cursor: pointer;
+.progress progress {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  left: -777px;
 }
 
-.group .card {
-    overflow: hidden;
-    background: white;
-    margin: 10px;
-    width: 300px;
-    height: 200px;
+.progress-bar {
+  overflow: hidden;
+  background: #ac92ec;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.card-content {
-    display: flex;
-    flex-wrap: wrap;
-    margin:0;
-    justify-content: space-between;
-    align-items: center;
+// .progress-value
+// {
+//   color: #333;
+//   display: block;
+//   line-height: 21px;
+//   text-align: center;
+// }
+
+.progress-bg {
+  background: #e6e9ed;
+  position: relative;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.card-content img {
-    width: 60px;
-    height: 60px;
+.progress-bar:after {
+  background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  -webkit-background-size: 40px 40px;
+  background-size: 40px 40px;
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 10px 0 10px;
+.progress progress[value="1"] + .progress-value:before {
+  content: "1%"; 
+}
+.progress progress[value="1"] ~ .progress-bg .progress-bar {
+  width: 1%; 
 }
 
-.header h1 {
-    margin: 0;
+@for $i from 0 through 100 {
+    .progress progress[value="#{$i}"] {
+      & + .progress-value:before { content : '#{$i}%' }
+      & ~ .progress-bg .progress-bar { width: $i * 1% }
+    }
+  } // end of progress bar
+
+  //burgerbutton
+  .button {    /*бургер кнопочка*/
+	position: relative; /*позиция относительно родительского эл-та*/
+	z-index: 2; /*расположение выше относительно других эл-тов*/
+	width: 24px;
+	height: 17px;
+	display: block;
+	transition: transform 0.3s ease;
 }
 
-.footer {
-    margin: 0 10px 10px 10px;
+.button span,  /*бургер кнопочка*/
+.button:after,  /*полоски, из которых делается кнопка*/
+.button:before {
+	content: '';
+	position: absolute;
+	height: 3px;
+	left: 0;
+	right: 0;
+	background: #000;
+	top: 50%;
+	margin-top: -1px;
+	transition: all 0.3s ease;
+}
+
+.button:after{   /*бургер кнопочка*/
+	margin-top: 5px;
+}
+
+.button:before{  /*бургер кнопочка*/
+	margin-top: -7px;
+}
+
+.active .button span {  /*бургер кнопочка*/
+	opacity: 0;
+}
+
+/*эти два блока делают крестик из полосочек*/
+.active .button:before,  /*бургер кнопочка*/
+.active .button:after {
+	margin-top: -1px;
+	transform: rotate(45deg); 
+}
+
+.active .button:after {  /*бургер кнопочка*/
+	transform: rotate(-45deg); 
 }
