@@ -1,13 +1,46 @@
 (function () {
+
+	function getFile(cb) {
+		var xhr = new XMLHttpRequest();
+
+		xhr.open('GET', 'data.json', true);
+		xhr.send();
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4){
+				return;
+			}
+			if (xhr.status === 0) {
+				cb(false, JSON.parse(xhr.response));
+			} else {
+				cb(true);
+			}
+		};
+	}
+
+	function init() {
+		getFile(function(error, data) {
+			if (error) {
+				return;
+			}
+			data.forEach(function(group) {
+				addGroup(group);
+				group.childrens
+			});
+			console.log(data);
+		});
+	}
+
 	var group = document.getElementsByClassName('group')[0]; //вытаскиваем div class="group"
 
 	// add new group
-	window.addGroup = function () {
+	window.addGroup = function (group) {
 		var contentBlock = document.getElementsByClassName('content')[0]; // вытаскиваем div class="content"
 		var defaultGroup = document.createElement('div'); //создаем div, которій будет группой стандартного вида
 		defaultGroup.className = 'group'; // присваиваем div-у класс
-		defaultGroup.id = contentBlock.children.length; // задаем id для всех групп, которые у нас будут в последствии
-		defaultGroup.innerHTML = '<div class="group-header">Group Title</div>' +
+		var title = group ? group.title : 'Group Title';
+		defaultGroup.id = group ? group.id : contentBlock.children.length; // задаем id для всех групп, которые у нас будут в последствии
+		defaultGroup.innerHTML = '<div class="group-header">' + title +'</div>' +
 								'<a class="button" href=""><span></span></a>' +
 								'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">Add card...</div>';
 		contentBlock.appendChild(defaultGroup); // передаем html и вставляем его вслед за последней созданной группой
@@ -73,8 +106,9 @@
 	// function removeGroup(contentBlock, event) {  // на потом
 		
 	// }
-}
-)();
+
+	init();
+})();
 
 
 
