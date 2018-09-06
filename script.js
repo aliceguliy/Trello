@@ -1,8 +1,6 @@
 (function () {
 	var group = document.getElementsByClassName('group')[0]; //вытаскиваем div class="group"
 
-	
-
 	// add new group
 	window.addGroup = function () {
 		var contentBlock = document.getElementsByClassName('content')[0]; // вытаскиваем div class="content"
@@ -17,7 +15,6 @@
 	// add new card
 	window.addCard = function (groupId) {
 		group = document.getElementById(groupId);
-		console.log(group);
 		var defaultCard = document.createElement('div'); //создаем div, который будет карточкой стандартного вида
 		defaultCard.ondrop = window.cardDrop; // сброс на карточку при перемещении
 		defaultCard.className = 'card';  // присваиваем div-у класс
@@ -62,18 +59,20 @@
 		'</div>'+
 		'</div>'; // создали переменную и запхнули в нее весь нужный html-код
 		defaultCard.innerHTML = html; // передали все это в html-файл
+		var removeIcon = defaultCard.children[0]; 
+		removeIcon.addEventListener('click', removeCard.bind(this, group)); //остледили место, где была нажата кнопка и привязали контекст для удаления в нужном месте
 		group.insertBefore(defaultCard, lastChild);  // вставили новую карточку
 	};
 	// delete card
-	window.removeCard = function(group, event) {
+	function removeCard(group, event) {
 		var target = event.target.parentNode.parentNode; // почему здесь нужно два раза писать parentNode
 		group.removeChild(target);
-	};
+	}
+
 	// delete group
-	window.removeGroup = function() {  // на потом
-		var groupTarget = event.target.parentNode;
-		//?
-	};
+	// function removeGroup(contentBlock, event) {  // на потом
+		
+	// }
 }
 )();
 
