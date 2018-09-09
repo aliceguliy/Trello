@@ -11,10 +11,10 @@ body {
   margin: 0;
   min-width: 320px;
   height: 100%;
-  background: #E1D6C7;
+  background: #F8B5A3;
   -ms-text-size-adjust: none;
   -webkit-text-size-adjust: 100%;
-  background-image: url(../images/main.jpg);
+  background-image: url(../images/main2.jpg);
   background-repeat: repeat;
   background-size: cover;
   background-position: 50% 50%;
@@ -89,7 +89,7 @@ button {
 }
 
 .main-header {
-  background: rgba(248, 212, 163, 0.7);
+  background: rgba(252, 147, 147, 0.7);
   padding: 10px;
   border-radius: 6px;
   display: flex;
@@ -104,11 +104,6 @@ button {
   align-items: center;
 } 
 
-// .trello-menu button,
-// .trello-menu .search {
-//   margin-right: 5px;
-// }
-
 .user-settings img {
   width: 35px;
   height: 35px;
@@ -119,11 +114,11 @@ button {
 .container { //was content in Natalia's Trello
   width: 100%;
   overflow: auto;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   padding: 0 0 20px;
 }
 
-.content { //поменять местами с контентом  для js
+.content { //was container in Natalia's Trello
   display: flex;
   align-items: flex-start;
   height: 100%;
@@ -134,7 +129,7 @@ button {
   width: 300px;
   padding: 10px;
   border-radius: 6px;
-  background:  rgba(248, 212, 163, 0.7);
+  background:  rgba(252, 147, 147, 0.7);
   margin: 10px;
   flex: 0 0 300px;
   max-height: 100%;
@@ -264,11 +259,11 @@ button {
 }
 
 .add-group-description input[type=text]:focus {
-  border: 2px solid #F6AD4A;
+  border: 2px solid #F52E46;
 }
 
 .btn {
-  background: #F6AD4A;
+  background: #F52E46;
   border-radius: 6px;
   padding: 10px;
   border: 0;
@@ -278,7 +273,7 @@ button {
 
 .btn:hover {
   background: #fff;
-  color: #F6AD4A;
+  color: #F52E46;
 }
 
 .card-popup {
