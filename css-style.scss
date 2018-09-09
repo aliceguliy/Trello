@@ -1,0 +1,278 @@
+* {max-height: 1000000px;}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {height: 100%;}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  height: 100%;
+  background: #E1D6C7;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: 100%;
+  background-image: url(../images/main.jpg);
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  font: 12px/15px "Gaegu", cursive;
+}
+
+img {border-style: none;}
+
+a {
+  text-decoration: none;
+  color: #C70039;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    background-color: transparent;
+  }
+}
+
+input,
+textarea,
+select {
+  color: #000;
+  vertical-align: middle;
+  font: 100%, "HelveticaNeue", Helvetica, Arial, sans-serif;
+}
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+header, footer, article,
+section, hgroup, nav, figure {display: block;}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+input[type=text],
+input[type=checkbox],
+input[type=password],
+input[type=file],
+input[type=submit],
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -webkitborder-radius: 0 !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+  
+  .main-header {
+    background: rgba(225,214,199,0.5);
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+      .trello-settings,
+      .user-settings {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      } 
+
+      .user-settings {
+        img {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%
+        }
+      }
+  } // main-header end
+
+  .container {
+    width: 100%;
+    overflow: auto;
+    height: calc(100vh - 70px);
+
+      .content {
+        display: flex;
+        align-items: flex-start;
+
+      .group {
+        widows: 300px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        background: rgba(225,255,255, 0.5);
+        margin: 10px;
+        flex: 0 0 300px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .add-group {
+          widows: 300px;
+          width: 100%;
+          padding: 10px;
+          border-radius: 6px;
+          background: rgba(225,255,255, 0.5);
+          margin: 10px;
+          flex: 0 0 300px;
+        } //add-group end
+
+        .card {
+          // overflow: hidden;
+          background: #fff;
+          margin: 0 0 10px; // or 10px
+          // width: 300px;
+          // height: 100px;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          align-content: stretch;
+          border-radius: 6px;
+
+          .card-header {
+            font-size: 20px;
+            margin: 0 0 10px; // Need this?
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          } // card-header end
+
+          .info {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            // h2 {
+            //   margin: 0; need this?
+            // }
+
+              .relevance {
+                width: 35px;
+                height: 7px;
+                border-radius: 6px;
+                background: #0AA023;
+              }
+            } // info end
+
+            .card-content {
+              display: flex;
+              flex-wrap: wrap;
+              margin:0;
+              justify-content: space-between;
+              align-items: center;
+        
+              img {
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+              }
+          
+
+          .progress {
+            width: 70%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+
+            &-progress {
+              position: absolute;
+              width: 0;
+              height: 0;
+              overflow: hidden;
+              left: -777px;
+            }
+
+            .progress-bg {
+              background: #e6e9ed;
+              position: relative;
+              height: 8px;
+              border-radius: 5px;
+              overflow: hidden;
+
+              .progress-bar {
+                overflow: hidden;
+                background: #ac92ec;
+                width: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                &:after {
+                  background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                  background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                  -webkit-background-size: 40px 40px;
+                  background-size: 40px 40px;
+                  position: absolute;
+                  content: '';
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                }
+              } //progress-bar end
+            } //progress-bg end
+            .progress progress[value="1"] + .progress-value:before {
+              content: "1%"; 
+            }
+            .progress progress[value="1"] ~ .progress-bg .progress-bar {
+              width: 1%; 
+            }
+
+            @for $i from 0 through 100 {
+                .progress progress[value="#{$i}"] {
+                  & + .progress-value:before { content : '#{$i}%' }
+                  & ~ .progress-bg .progress-bar { width: $i * 1% }
+              }
+            } 
+          } //progress end
+        } // card-end
+
+        .add-card {
+          width: 100%;
+          display: block;
+          background: none;
+          padding: 0;
+          border: 0;
+          font-size: 20px;
+          text-align: left;
+        } // add-card end
+      } // group end
+    } // content end
+  } // container end
+} // page end

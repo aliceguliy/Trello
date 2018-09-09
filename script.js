@@ -42,7 +42,7 @@
 		defaultGroup.id = group ? group.id : contentBlock.children.length; // задаем id для всех групп, которые у нас будут в последствии
 		defaultGroup.innerHTML = '<div class="group-header">' + title +'</div>' +
 								'<a class="button" href=""><span></span></a>' +
-								'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">Add card...</div>';
+								'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">+ Add card...</div>';
 		contentBlock.appendChild(defaultGroup); // передаем html и вставляем его вслед за последней созданной группой
 	};
 	// add new card

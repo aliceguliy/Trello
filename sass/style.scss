@@ -1,149 +1,362 @@
+* {max-height: 1000000px;}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {height: 100%;}
+
 body {
-    background: #E1D6C7  ;
-    background-image: url(../images/main.jpg);
-    background-repeat: repeat;
-	background-size: cover;
-	background-position: 50% 50%;
-    font: 18px 'Gaegu', cursive;
+  margin: 0;
+  min-width: 320px;
+  height: 100%;
+  background: #E1D6C7;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: 100%;
+  background-image: url(../images/main.jpg);
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  font: 12px/15px "Gaegu", cursive;
+}
+
+img {border-style: none;}
+
+a {
+  text-decoration: none;
+  color: #C70039;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    background-color: transparent;
+  }
+}
+
+input,
+textarea,
+select {
+  color: #000;
+  vertical-align: middle;
+  font: 100%, "HelveticaNeue", Helvetica, Arial, sans-serif;
+}
+
+form,
+fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none;
+}
+
+header, footer, article,
+section, hgroup, nav, figure {display: block;}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+input[type=text],
+input[type=checkbox],
+input[type=password],
+input[type=file],
+input[type=submit],
+textarea {
+  -webkit-appearance: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 .page {
-    width: 100%;
-    overflow: hidden;
-
-    .main-header {
-        background: #E1D6C7;
-        opacity: 0.8;
-        width: 100%; 
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
-        .boards {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .user-data {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            img {
-                width: 50px;
-                height: 50px;
-            }
-
-            p {
-                margin: 0 0 0 10px;
-                padding: 0;
-                text-align: center;
-            }
-        }
-    }
-
-    .main-footer {
-        opacity: 0.8;
-    }
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
 }
 
+.main-header {
+  background: rgba(248, 212, 163, 0.7);
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.content {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
+.trello-menu,
+.user-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+// .trello-menu button,
+// .trello-menu .search {
+//   margin-right: 5px;
+// }
+
+.user-settings img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.container { //was content in Natalia's Trello
+  width: 100%;
+  overflow: auto;
+  height: calc(100vh - 70px);
+  padding: 0 0 20px;
+}
+
+.content { //поменять местами с контентом  для js
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.group,
+.add-group {
+  width: 300px;
+  padding: 10px;
+  border-radius: 6px;
+  background:  rgba(248, 212, 163, 0.7);
+  margin: 10px;
+  flex: 0 0 300px;
+  max-height: 100%;
 }
 
 .group {
-    background: #e9e9eb;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 3px;
-
-    .group-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 10px 10px 0 10px;
-    
-        h1 {
-            margin: 0;
-        }
-    }
-
-    .card {
-        overflow: hidden;
-        background: white;
-        margin: 10px;
-        width: 300px;
-        height: 100px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-content: stretch;
-        border-radius: 3px;
-    
-        h2 {
-            margin: 0;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .drop-card {
-                cursor: pointer;
-            }
-        }
-
-        .info {
-            width: 70%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            h2 {
-                margin: 0;
-            }
-
-            .relevance {
-                width: 45px;
-                height: 10px;
-                border-radius: 5px;
-                background: #0AA023;
-            }
-        }
-
-        .card-content {
-            display: flex;
-            flex-wrap: wrap;
-            margin:0;
-            justify-content: space-between;
-            align-items: center;
-        
-            img {
-                width: 60px;
-                height: 60px;
-            }
-        
-            p {
-                margin: 0;
-                padding: 0;
-            }
-        }
-    }
-
-    .group-footer {
-        opacity: 0.5;
-        cursor: pointer;
-        margin: 0 10px 10px 10px;
-    }
+  display: flex;
+  flex-direction: column;
 }
+
+.card-holder {
+  height: 100%;
+  overflow: auto;
+}
+
+.group:first-child {margin-left: 0;}
+.group:last-child {margin-right: 0;}
+
+.add-group {
+  width: 100%;
+  // padding: 10px;
+  // border-radius: 6px;
+  // background: rgba(246, 173, 74, 0.9);
+  // margin: 10px;
+  // flex: 0 0 300px;
+}
+
+.group-header {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background: #fff;
+  margin: 0 0 10px; // or 10px
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  border-radius: 6px;
+}
+
+.card-header {
+  font-size: 20px;
+  // margin: 0 0 10px; // Need this?
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info h2 {
+   margin: 0;
+}
+
+.relevance {
+  width: 35px;
+  height: 7px;
+  border-radius: 6px;
+  background: #0AA023;
+}
+
+.card-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-content img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.add-card {
+  width: 100%;
+  display: block;
+  background: none;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  text-align: left;
+  font-family: "Gaegu";
+}
+
+.add-group-description {
+  display: none;
+}
+
+.add-group-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 18px;
+}
+
+.add-group-edit .add-group-button {
+  display: none;
+}
+
+.add-group-edit .add-group-description {
+  display: block;
+}
+
+.add-group-description input[type=text] {
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  outline: none;
+  display: block;
+  margin: 0 0 10px;
+}
+
+.add-group-description input[type=text]:focus {
+  border: 2px solid #F6AD4A;
+}
+
+.btn {
+  background: #F6AD4A;
+  border-radius: 6px;
+  padding: 10px;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #F6AD4A;
+}
+
+.card-popup {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  max-width: 600px;
+  width: 100%;
+  transform: translate(-50%);
+  background: #fff;
+  z-index: 2;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.card-popup-holder:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.header-popup {
+  margin: 0 0 10px;
+  display: flex;
+}
+
+.header-input {
+  border: 0;
+  width: 100%;
+  background: none;
+  padding: 0;
+  font-size: 23px;
+  color: #000;
+}
+
+.card-popup-holder .progress {
+  width: 100%;
+}
+
+.card-popup-holder .info {
+  margin: 0 0 10px;
+}
+
+.description-edit-block {
+  display: none;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.description-edit .description-block {
+  display: none;
+}
+
+.description-edit .description-edit-block {
+  display: block;
+}
+
+.description-edit-block textarea {
+  border: 0;
+  width: 100%;
+  background: none;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.2;
+  resize: none;
+  height: 100px;
+  overflow: auto;
+}
+
+
+
 
 
 
@@ -174,14 +387,6 @@ body {
   top: 0;
   left: 0;
 }
-
-// .progress-value
-// {
-//   color: #333;
-//   display: block;
-//   line-height: 21px;
-//   text-align: center;
-// }
 
 .progress-bg {
   background: #e6e9ed;
@@ -217,51 +422,4 @@ body {
       & + .progress-value:before { content : '#{$i}%' }
       & ~ .progress-bg .progress-bar { width: $i * 1% }
     }
-  } // end of progress bar
-
-  //burgerbutton
-  .button {    /*бургер кнопочка*/
-	position: relative; /*позиция относительно родительского эл-та*/
-	z-index: 2; /*расположение выше относительно других эл-тов*/
-	width: 24px;
-	height: 17px;
-	display: block;
-	transition: transform 0.3s ease;
-}
-
-.button span,  /*бургер кнопочка*/
-.button:after,  /*полоски, из которых делается кнопка*/
-.button:before {
-	content: '';
-	position: absolute;
-	height: 3px;
-	left: 0;
-	right: 0;
-	background: #000;
-	top: 50%;
-	margin-top: -1px;
-	transition: all 0.3s ease;
-}
-
-.button:after{   /*бургер кнопочка*/
-	margin-top: 5px;
-}
-
-.button:before{  /*бургер кнопочка*/
-	margin-top: -7px;
-}
-
-.active .button span {  /*бургер кнопочка*/
-	opacity: 0;
-}
-
-/*эти два блока делают крестик из полосочек*/
-.active .button:before,  /*бургер кнопочка*/
-.active .button:after {
-	margin-top: -1px;
-	transform: rotate(45deg); 
-}
-
-.active .button:after {  /*бургер кнопочка*/
-	transform: rotate(-45deg); 
-}
+} // end of progress bar
