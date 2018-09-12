@@ -18,7 +18,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   background-position: 50% 50%;
-  font: 12px/15px "Gaegu", cursive;
+  font: 12px/15px 'Dancing Script', cursive;;
 }
 
 img {border-style: none;}
@@ -90,7 +90,7 @@ button {
 
 .main-header {
   background: rgba(252, 147, 147, 0.7);
-  padding: 10px;
+  padding: 8px;
   border-radius: 6px;
   display: flex;
   justify-content: space-between;
@@ -103,6 +103,36 @@ button {
   justify-content: space-between;
   align-items: center;
 } 
+
+
+
+.search input[type=search] {
+	padding: 4px 6px;
+  height: 35px;
+  border: 0;
+  opacity: 0.5;
+  border-radius: 6px;
+}
+
+.search input[type=button] {
+  width: 60px;
+  height: 35px;
+  margin: -3px;
+  border-radius: 6px;
+	background: #F52E46;
+	flex-shrink: 0;
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3 ease;
+	text-transform: uppercase;
+}
+
+.search input[type=button]:hover { 
+	  background: #fff;
+    color: #F52E46; 
+}
 
 .user-settings img {
   width: 35px;
@@ -224,7 +254,7 @@ button {
   border: 0;
   font-size: 18px;
   text-align: left;
-  font-family: "Gaegu";
+  font-family: 'Dancing Script', cursive;
 }
 
 .add-group-description {
@@ -236,7 +266,9 @@ button {
   border: 0;
   padding: 0;
   text-align: left;
-  font-size: 18px;
+  font-size: 25px;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
 }
 
 .add-group-edit .add-group-button {
@@ -271,9 +303,28 @@ button {
   font-weight: bold;
 }
 
+.btn-remove {
+  padding: 6px;
+}
+
 .btn:hover {
   background: #fff;
   color: #F52E46;
+}
+
+.btn-board-button {
+  margin-right: 5px;
+  background: #F52E46;
+  border-radius: 6px;
+  padding: 10px;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+
+  &:hover {
+    background: #fff;
+    color: #F52E46;
+  }
 }
 
 .card-popup {
