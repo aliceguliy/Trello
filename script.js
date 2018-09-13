@@ -50,13 +50,44 @@
 	
 	};
 
-
+	var draggableCard = {};
 	// add new card
 	window.addCard = function (groupId) {
 		group = document.getElementById(groupId);
 		var defaultCard = document.createElement('div'); //создаем div, который будет карточкой стандартного вида
+		defaultCard.draggable = true;
 		defaultCard.className = 'card';  // присваиваем div-у класс
 		// нужно вставить дефолтные данные
+
+
+		// drag'n'drop
+		function onDragStart() { 
+			this.style.opacity = '0.7'; 
+			draggableCard = defaultCard; 
+		}
+		defaultCard.addEventListener('dragstart', onDragStart, false);
+
+		function handleDragEnd() {
+			this.style.opacity = '1';
+		}
+		defaultCard.addEventListener('dragend', handleDragEnd, false);
+
+		defaultCard.ondragover = onDragOver;
+		defaultCard.ondrop = cardDrop;
+
+		var onDragOver = function (event) {
+			event.preventDefault();
+		};
+		
+		var cardDrop = function (event) {
+			event.preventDefault();
+			var previousCard = event.path.find(function(node) {
+				return node.className === 'card';
+			});
+			var droppedGroup = previousCard.parentNode;
+			droppedGroup.insertBefore(draggableCard, previousCard);
+		};		
+
 		
 		var lastChild = group.children[group.children.length - 1]; // определяем последнего потомка для последующей вставки карточки
 		
@@ -106,9 +137,13 @@
 	//set class on add-group button
 	var btn = document.getElementsByClassName('add-group-button');
 	var holder = document.getElementsByClassName('add-group');
+	var btnHolder = document.getElementsByClassName('btn btn-remove-group');
 	btn[0].onclick = function() {
 		holder[0].classList.add('add-group-edit');
-	};	// нужно, чтобы по клику в любой другой области класс снимался
+	};	
+	btnHolder[0].onclick = function() {
+		holder[0].classList.remove('add-group-edit');
+	};
 
 
 	init();
