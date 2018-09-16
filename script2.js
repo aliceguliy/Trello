@@ -1,53 +1,24 @@
-(function () {
-	// add new card 
-	window.addCard = function (groupId) {
-		group = document.getElementById(groupId);
-		var defaultCard = document.createElement('div'); //создаем div, который будет карточкой стандартного вида
-		defaultCard.ondrop = window.cardDrop; // сброс на карточку при перемещении
-		defaultCard.className = 'card';  // присваиваем div-у класс
-		var lastChild = group.children[group.children.length - 1]; // определяем последнего потомка для последующей вставки карточки
-		// drag'n'drop
-		defaultCard.draggable = true; //разрешаем перетаскивание
-		defaultCard.ondragstart = function(event) {
-			event.dataTransfer.setData('tag', event.target.id); //вписать нужное?
-		};
-		var draggableCard = defaultCard; // переделать
-		window.onDragOver = function(event) {
-			event.preventDefault();
-		};
-			
-		window.cardDrop = function(event) {
-			event.preventDefault();
-			var previosCard = event.path.find(function(node){
-				return node.className === 'card';
-			});
-			var droppedGroup = previosCard.parentNode;
-			droppedGroup.insertBefore(draggableCard, previosCard);
-		};
-		// add card content
-		var html = '<div>' +
-		'<div class="card-header">' +
-			'<div class="progress">' +
-				'<progress max="100" value="40"></progress>'  +
-				'<div class="progress-bg"><div class="progress-bar"></div></div>' +
-			'</div>'+
-			'<div class="remove-card">' +
-				'<i class="fa fa-times" aria-hidden="true"></i>' +
-			'</div>' +
-		'</div>' +
-		'<div class="info">' +
-			'<h2>Title</h2>' +
-			'<div class="relevance"></div>' +
-		'</div>'+
-		'<div class="card-content">' +
-			'<i class="fas fa-ellipsis-h"></i>' +
-			new Date().toDateString() +
-			'<img src="./images/carg-img.jpg" alt="">' +
-		'</div>'+
-		'</div>'; // создали переменную и запхнули в нее весь нужный html-код
-		defaultCard.innerHTML = html; // передали все это в html-файл
-		var removeIcon = defaultCard.children[0]; 
-		removeIcon.addEventListener('click', removeCard.bind(this, group)); //остледили место, где была нажата кнопка и привязали контекст для удаления в нужном месте
-		group.insertBefore(defaultCard, lastChild);  // вставили новую карточку
-	};
-})();
+/*
+Мой список очень тупых вопросов
+
+1.У элемента group получается три потомка: 
+group-header, card-holder и group-footer. Я хочу, чтобы карточка вставлялась не просто в group, 
+а именно в card-holder, потому что Наталья нам показала, как при помощи этого элемента красиво застилить 
+наличие большого количества созданных карточек.
+Следуя старому коду все карточки все равно добавляются в group, и я попробовала несколько вариантов,
+но не вышло у меня привязать их к card-holder :(
+2.Подозреваю, что из-за этого у меня не работает удаление карточки по клику. Событие отлавливается, 
+я вывожу его через parentNode на уровень <div class = "card">. Навесила слушателя на иконку, как у тебя в коде,
+но когда предлагаю ему сделать removeChild, он выдает, что удаляемый элемент не является потомком элемента,
+который я указала. Хотя, возможно, что там еще что-то не так.
+3. Удаление группы, я так понимаю, идет по аналогии с удалением карточки, но раз я там не смогла до конца
+решить проблему, сюда решила пока не лезть, только функцию пустую написала.
+4. Логику со вставкой бэк-энда я в принципе поняла, но есть вопрос. В моем варианте кода, как обычно,
+ничего не работает. Для того, чтобы достать childrens для карточки и вставить их по аналогии данных group, их тоже
+нужно сначала перебрать или как-то через наследование это сделать? Потому что я попыталась сделать похожим макаром
+на твой вариант и ничего, само собой, не заработало:))
+5. С перетаскиванием карточек, я частично разобралась, даже стили немного понавесила, чтобы было видно, какую
+именно карточку подцепили. Но как просчитать место, в которое должна упасть карточка, все-таки не поняла. 
+В инете нашла только пример, как при перетаскивании заменять один элемент другим, или перетаскивать только
+между двумя целями, но это не то. 
+*/

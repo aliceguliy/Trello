@@ -27,95 +27,80 @@
 				addGroup(group);
 				group.childrens;
 			});
-			console.log(data);
 		});
 	}
 
 	// create content
-	var group = document.getElementsByClassName('group')[0]; //вытаскиваем div class="group"
+	var group = document.getElementsByClassName('group')[0];
 
 	// add new group
 	window.addGroup = function (group) {
-		var contentBlock = document.getElementsByClassName('content')[0]; // вытаскиваем div class="content"
-		var defaultGroup = document.createElement('div'); //создаем div, который будет группой стандартного вида
-		defaultGroup.className = 'group'; // присваиваем div-у класс
+		var addGroup = document.getElementsByClassName('add-group')[0];
+		var contentBlock = document.getElementsByClassName('content')[0];
+		var defaultGroup = document.createElement('div'); 
+		defaultGroup.className = 'group';
 		var title = group ? group.title : '<strong class="title">Group Title</strong>';
-		defaultGroup.id = group ? group.id : contentBlock.children.length; // задаем id для всех групп, которые у нас будут в последствии
+		defaultGroup.id = group ? group.id : contentBlock.children.length;
 		defaultGroup.innerHTML = '<div class="group-header">' + title +
 								'<button class="btn btn-remove" onclick="removeGroup()"><i class="fa fa-times" aria-hidden="true"></i></button>' +'</div>' +
 								'<div class="card-holder"></div>' +
 								'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">' +
 								'<button class="add-card">+ Add card...</button>';
-		contentBlock.appendChild(defaultGroup); // передаем html и вставляем его вслед за последней созданной группой
-	
+		contentBlock.insertBefore(defaultGroup, addGroup);
 	};
 
-	var draggableCard = {};
 	// add new card
-	window.addCard = function (groupId) {
+	
+	window.addCard = function (groupId, card) {
 		group = document.getElementById(groupId);
-		var defaultCard = document.createElement('div'); //создаем div, который будет карточкой стандартного вида
+		var defaultCard = document.createElement('div');
 		defaultCard.draggable = true;
-		defaultCard.className = 'card';  // присваиваем div-у класс
-		// нужно вставить дефолтные данные
+		defaultCard.className = 'card';
+		var cardTitle = card ? card.title : '<h2>Title</h2>';
+		var cardProgress = card ? card.title : '<div class="progress">' +
+								'<progress max="100" value="40"></progress>'  +
+								'<div class="progress-bg"><div class="progress-bar"></div></div>' +
+								'</div>';
+		var cardDate = card ? card.expirationDate : new Date().toDateString();
+		var cardAvatar = card ? card.avatar : '<img src="./images/carg-img.jpg" alt="">';
+		var lastChild = group.children[group.children.length - 1];
 
-
-		// drag'n'drop
-		function onDragStart() { 
-			this.style.opacity = '0.7'; 
-			draggableCard = defaultCard; 
-		}
-		defaultCard.addEventListener('dragstart', onDragStart, false);
-
-		function handleDragEnd() {
-			this.style.opacity = '1';
-		}
-		defaultCard.addEventListener('dragend', handleDragEnd, false);
-
-		defaultCard.ondragover = onDragOver;
-		defaultCard.ondrop = cardDrop;
-
-		var onDragOver = function (event) {
-			event.preventDefault();
-		};
-		
-		var cardDrop = function (event) {
-			event.preventDefault();
-			var previousCard = event.path.find(function(node) {
-				return node.className === 'card';
-			});
-			var droppedGroup = previousCard.parentNode;
-			droppedGroup.insertBefore(draggableCard, previousCard);
-		};		
-
-		
-		var lastChild = group.children[group.children.length - 1]; // определяем последнего потомка для последующей вставки карточки
-		
 		// add card content
 		var html = '<div>' +
-		'<div class="card-header">' +
-			'<div class="progress">' +
-				'<progress max="100" value="40"></progress>'  +
-				'<div class="progress-bg"><div class="progress-bar"></div></div>' +
-			'</div>'+
+		'<div class="card-header">' + cardProgress +
 			'<div class="remove-card" onclick="removeCard()">' +
 				'<i class="fa fa-times" aria-hidden="true"></i>' +
 			'</div>' +
 		'</div>' +
-		'<div class="info">' +
-			'<h2>Title</h2>' +
+		'<div class="info">' + cardTitle +
 			'<div class="relevance"></div>' +
 		'</div>'+
 		'<div class="card-content">' +
-			'<i class="fa fa-align-left" aria-hidden="true"></i>' +
-			new Date().toDateString() +
-			'<img src="./images/carg-img.jpg" alt="">' +
+			'<i class="fa fa-align-left" aria-hidden="true"></i>' + cardDate + cardAvatar +
 		'</div>'+
-		'</div>'; // создали переменную и запхнули в нее весь нужный html-код
-		defaultCard.innerHTML = html; // передали все это в html-файл
-		var removeIcon = defaultCard.children[0]; 
-		removeIcon.addEventListener('click', removeCard.bind(this, group)); //остледили место, где была нажата кнопка и привязали контекст для удаления в нужном месте
-		group.insertBefore(defaultCard, lastChild);  // вставили новую карточку
+		'</div>';
+		defaultCard.innerHTML = html;
+		group.insertBefore(defaultCard, lastChild);
+		
+		// drag'n'drop	
+		function onDragStart() { 
+			this.style.opacity = '0.7'; 
+		}
+		defaultCard.addEventListener('dragstart', onDragStart, false);
+
+		function onDragEnd() {
+			this.style.opacity = '1';
+		}
+		defaultCard.addEventListener('dragend', onDragEnd, false);
+
+		function onDrop() {
+			
+		}
+		defaultCard.addEventListener('dragend', onDrop, false);
+
+		// remove-icon for card deleting
+		var removeCardIcon = defaultCard.children[0].children[0].children[1];
+		removeCardIcon.addEventListener('click', removeCard.bind(this, group));
 	};
     
 
@@ -123,17 +108,13 @@
 	function removeCard(group, event) {
 		var target = event.target.parentNode.parentNode.parentNode;
 		group.removeChild(target);
-		// console.log(target);
 	}
-
-
+	
 	// delete group
 	function removeGroup(contentBlock, event) { 
-		var removeTarget = event.target.parentNode.parentNode;
-		contentBlock.removeChild(removeTarget);
+		
 	}
 
-    
 	//set class on add-group button
 	var btn = document.getElementsByClassName('add-group-button');
 	var holder = document.getElementsByClassName('add-group');
@@ -144,7 +125,6 @@
 	btnHolder[0].onclick = function() {
 		holder[0].classList.remove('add-group-edit');
 	};
-
 
 	init();
 })();
