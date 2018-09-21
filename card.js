@@ -24,7 +24,7 @@ function addCard (groupId, card) {
             '<div class="relevance"></div>' +
         '</div>'+
         '<div class="card-content">' +
-            '<i class="fa fa-align-left" aria-hidden="true" onclick=" openModal(title, progress, relevance, date, avatar, cardInfo)"></i>' + cardDate + cardAvatar +
+            '<i class="fa fa-align-left" aria-hidden="true" onclick=" openModal()"></i>' + cardDate + cardAvatar +
         '</div>'+
     '</div>';
 	defaultCard.innerHTML = html;
@@ -67,4 +67,40 @@ function removeCard(group, event) {
 	var target = event.target.parentNode.parentNode.parentNode.parentNode;
 	var cardParent = group.children[1];
 	cardParent.removeChild(target);
+}
+
+function openModal() {
+	var options = {
+		template:
+		'<div class="card-popup">' +
+			'<form action="">'+
+				'<div class="header-popup">' +
+					'<h1>Card settings</h1>' +
+					'<button class=" btn close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>'+
+				'</div>' + 
+				'<div class="description-edit">' +
+					'<div class="progress-value">' +
+						'<h2>Choose your progress grade:</h2>' +
+						'<input type="range" min="1" max="100" step="1" value="">' +
+					'</div>' +
+					'<div class="info-value">' + 
+						'<input type="text" placeholder="Enter a card title...">' + 
+						'<input type="text" placeholder="Choose relevance: high, middle or low...">' + 
+					'</div>' +
+					'<div class="card-content-value">' + 
+						'<input type="date">' +
+						'<button class="btn image">Add avatar</button>' + 
+					'</div>' +
+					'<div class="info-block-value">' +
+						'<textarea></textarea>' +
+					'</div>' +	
+				'</div>' +
+				'<div class="saving-button">' +
+					'<button class="btn cancel">Save</button>' +
+				'</div>' +
+			'</form>' +	
+		'</div>'
+	};
+	var modal = new ModalService(options);
+	modal.open();
 }

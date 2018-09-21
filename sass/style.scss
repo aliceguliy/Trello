@@ -187,14 +187,6 @@ button {
   align-items: center;
 }
 
-// .card-place {
-//   background: rgba(255,255,255,0.7);
-//   width: 280px;
-//   height: 80px;
-//   border: 1px, solid #F52E46;
-//   margin: 10px;
-// }
-
 .card {
   background: #fff;
   margin: 0 0 10px; // or 10px
@@ -278,7 +270,9 @@ button {
   display: block;
 }
 
-.add-group-description input[type=text] {
+.add-group-description input[type=text],
+.info-value input[type=text],
+.card-content-value input[type=date] {
   width: 100%;
   background: #fff;
   padding: 10px;
@@ -289,7 +283,10 @@ button {
   margin: 0 0 10px;
 }
 
-.add-group-description input[type=text]:focus {
+.add-group-description input[type=text]:focus,
+.card-content-value input[type=date]:focus,
+.info-block-value textarea:focus,
+.info-value input[type=text]:focus {
   border: 2px solid #F52E46;
 }
 
@@ -326,16 +323,11 @@ button {
   }
 }
 
-// .card-popup-holder {
-//   position: absolute;
-//   top: -35%;
-//   left: 15%;
-// }
-
 .card-popup {
   top: 100px;
   left: 50%;
-  max-width: 500px;
+  max-width: 600px;
+  min-width: 350px;
   width: 100%;
   transform: translate(-50%);
   background: rgba(252, 147, 147, 0.9);
@@ -355,47 +347,81 @@ button {
 }
 
 .header-popup {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-// .header-input {
-//   border: 0;
+// .description .progress {
 //   width: 100%;
-//   background: none;
-//   padding: 0;
-//   font-size: 23px;
-//   color: #000;
 // }
 
-.card-popup-holder .progress {
-  width: 100%;
+// .description .info {
+//   margin: 0 0 10px;
+//   width: 100%;
+
+//   .relevance {
+//     width: 75px;
+//     height: 10px;
+//   }
+
+//   h2 {
+//     font-size: 25px;
+//   }
+// }
+
+// .description .info-block {
+//   font-size: 25px;
+
+//   p {
+//     margin: 10px;
+//   }
+// }
+
+.description-edit .progress-value {
+      width: 100%;
+      // padding: 5px;
+      margin-bottom: 8px; 
+
+      h2 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+      }
 }
 
-.card-popup-holder .info {
-  margin: 0 0 10px;
+.progress-value input[type=range] {
+    -webkit-appearance: none;
+    height: 10px;
+    padding: 0;
+    width: 100%;
+    border-radius: 6px;
+    outline : none;
+    background: #ac92ec;
 }
 
-.description-edit-block {
-  display: block;
+.progress-value input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #76378B;
+    cursor: pointer;
 }
 
-.description {
-  font-size: 15px;
-  line-height: 1.2;
+.card-content-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.description-edit .description-block {
-  display: none;
+.card-content-value input[type=date] {
+  width: 70%;
+  height: 35px;
+  margin: 0;
 }
 
-.description-edit .description-edit-block {
-  display: block;
-}
-
-.description-edit-block textarea {
+.info-block-value textarea {
   border: 0;
   border-radius: 6px;
   width: 100%;
@@ -407,11 +433,18 @@ button {
   resize: none;
   height: 100px;
   overflow: auto;
+  outline : none;
 }
 
+.description {
+  display: block;
+  font-size: 15px;
+  line-height: 1.2;
+}
 
-
-
+.description-edit {
+  display: block;
+}
 
 
 

@@ -38,6 +38,6 @@ btnHolder[0].onclick = function() {
 // function removeGroup() { 
 // 	var target = event.target.parentNode.parentNode.parentNode;
 // 	// console.log(target);
-// 	var groupParent = contentBlock.children[1];
+// 	var groupParent = contentBlock.children[0];
 // 	groupParent.removeChild(target);
 // }

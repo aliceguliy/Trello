@@ -39,29 +39,8 @@ var appFunctions = {};
 	//add card
 	appFunctions.addcard();
 	// add modal window
-
-	appFunctions.openModal = function(title, progress, relevance, date, avatar, cardInfo) {
-		var options = {
-			template:
-			'<div class="card-popup">' +
-			'<form action="">'+
-				'<div class="header-popup">' +
-					'<h1>Card settings</h1>' +
-					'<button class=" btn close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>'+
-				'</div>' + progress +
-				'<div class="info">' + title + relevance + '</div>' +
-				'<div class="card-content">' + date + avatar + '</div>' +
-				'<div class="description description-edit">' +
-					'<div class="description-block">' + cardInfo + 
-					'<button class="btn edit">Edit</button>' +
-				'</div>' +
-			'</form>' +	
-		'</div>'
-		};
-		var modal = new ModalService(options);
-		modal.open();
-	};
-	
+	appFunctions.openModal(); 
 	// call json data
 	init();
 });
+
