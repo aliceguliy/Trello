@@ -1,5 +1,3 @@
-var appFunctions = {};
-
 (function () {
 	//get json data
 	function getFile(cb) {
@@ -26,21 +24,22 @@ var appFunctions = {};
 				return;
 			}
 			data.forEach(function(group) {
-				appFunctions.addGroup(group);
+				addGroup(group);
 				group.childrens.forEach(function(card) {
-					appFunctions.addCard(group.id, card);
+					console.log(card);
+					addCard(group.id, card);
 				});
 			});
 		});
 	}
 
-	// addGroup
-	appFunctions.addGroup();
-	//add card
-	appFunctions.addcard();
+	// // addGroup
+	// appFunctions.addGroup();
+	// //add card
+	// appFunctions.addcard();
 	// add modal window
-	appFunctions.openModal(); 
+	// appFunctions.openModal(); 
 	// call json data
 	init();
-});
+})();
 

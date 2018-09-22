@@ -4,37 +4,56 @@ function addCard (groupId, card) {
 	var group = document.getElementById(groupId);
 	var cardParent = group.children[1];
 	var cardTitle = card ? card.title : '<h2>Title</h2>';
-	var cardProgress = card ? card.progress : '<div class="progress">' +
-                                '<progress max="100" value="80"></progress>' +
-                                '<div class="progress-bg"><div class="progress-bar"></div></div>' +
-                                '</div>';
+	var cardProgress = card ? card.progress * 100 : 0;
 	var cardDate = card ? card.expirationDate : new Date().toDateString();
-	var cardAvatar = card ? card.avatar : '<img src="./images/carg-img.jpg" alt="">';
+	var cardAvatar = card ? card.avatar : './images/carg-img.jpg';
 
 	// add card content
 	var defaultCard = document.createElement('div');
+	// icon for modal-window opening
+	var modalIcon = document.createElement('i');
+	modalIcon.classList.add('fa');
+	modalIcon.classList.add('fa-align-left');
+	modalIcon.addEventListener('click', openModal.bind(this, {
+		title: cardTitle,
+		date: cardDate,
+		avatar: cardAvatar,
+		progress: cardProgress
+	}));
+	
 	defaultCard.className = 'card';
-	var html = '<div>' +
-        '<div class="card-header">' + cardProgress +
-            '<div class="remove-card" onclick="removeCard()">' +
-                '<i class="fa fa-times" aria-hidden="true"></i>' +
-            '</div>' +
-        '</div>' +
-        '<div class="info">' + cardTitle +
-            '<div class="relevance"></div>' +
-        '</div>'+
-        '<div class="card-content">' +
-            '<i class="fa fa-align-left" aria-hidden="true" onclick=" openModal()"></i>' + cardDate + cardAvatar +
-        '</div>'+
-    '</div>';
+	var html = 
+		'<div>' +
+			'<div class="card-header">' + 
+				'<div class="progress">' +
+					'<progress max="100" value="' + cardProgress + '"></progress>' +
+					'<div class="progress-bg">' + 
+						'<div class="progress-bar"></div>' + 
+					'</div>' +
+				'</div>' +
+				'<div class="remove-card">' +
+					'<i class="fa fa-times" aria-hidden="true"></i>' +
+				'</div>' +
+			'</div>' +
+			'<div class="info">' + cardTitle +
+				'<div class="relevance"></div>' +
+			'</div>'+
+			'<div class="card-content">' +
+				cardDate + 
+				'<img src="' + cardAvatar + '" alt="">' +
+			'</div>'+
+		'</div>';
 	defaultCard.innerHTML = html;
+	defaultCard.children[0].children[2].appendChild(modalIcon);
 	cardParent.appendChild(defaultCard);
         
 	// drag'n'drop	
 	defaultCard.draggable = true;
 	function onDragStart() { 
 		this.style.opacity = '0.7'; 
+		draggableCard = defaultCard;
 	}
+
 	defaultCard.addEventListener('dragstart', onDragStart, false);
 
 	function onDragEnd() {
@@ -42,10 +61,10 @@ function addCard (groupId, card) {
 	}
 	defaultCard.addEventListener('dragend', onDragEnd, false);
     
-	function ondragOver() {
+	function onDragOver() {
 		event.preventDefault();
 	}
-	defaultCard.addEventListener('dragover', ondragOver, false);
+	defaultCard.addEventListener('dragover', onDragOver, false);
 
 	var onDrop = function(event) {
 		event.preventDefault();
@@ -54,11 +73,13 @@ function addCard (groupId, card) {
 		});
 		var droppedGroup = previousCard.parentNode;
 		droppedGroup.insertBefore(draggableCard, previousCard);
+		draggableCard = null;
 	};
 	defaultCard.addEventListener('drop', onDrop, false);
 
 	// remove-icon for card deleting
 	var removeCardIcon = defaultCard.children[0].children[0].children[1];
+	window.defaultCard  = defaultCard;
 	removeCardIcon.addEventListener('click', removeCard.bind(this, group));
 }
 
@@ -69,11 +90,16 @@ function removeCard(group, event) {
 	cardParent.removeChild(target);
 }
 
-function openModal() {
+//modal-window options
+// submitForm = function(event) {
+// 	console.log(event);
+// }
+function openModal(data) {
+	// console.log(data);
 	var options = {
 		template:
 		'<div class="card-popup">' +
-			'<form action="">'+
+			'<form action="" onsubmit=submitForm()>'+
 				'<div class="header-popup">' +
 					'<h1>Card settings</h1>' +
 					'<button class=" btn close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>'+
