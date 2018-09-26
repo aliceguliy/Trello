@@ -32,14 +32,6 @@
 			});
 		});
 	}
-
-	// // addGroup
-	// appFunctions.addGroup();
-	// //add card
-	// appFunctions.addcard();
-	// add modal window
-	// appFunctions.openModal(); 
-	// call json data
 	init();
 })();
 

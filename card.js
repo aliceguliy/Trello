@@ -4,7 +4,7 @@ function addCard (groupId, card) {
 	var group = document.getElementById(groupId);
 	var cardParent = group.children[1];
 	var cardTitle = card ? card.title : '<h2>Title</h2>';
-	var cardProgress = card ? card.progress * 100 : 0;
+	var cardProgress = card ? card.progress * 100 : 60;
 	var cardDate = card ? card.expirationDate : new Date().toDateString();
 	var cardAvatar = card ? card.avatar : './images/carg-img.jpg';
 
@@ -19,8 +19,7 @@ function addCard (groupId, card) {
 		date: cardDate,
 		avatar: cardAvatar,
 		progress: cardProgress
-	}));
-	
+	}));	
 	defaultCard.className = 'card';
 	var html = 
 		'<div>' +
@@ -44,7 +43,7 @@ function addCard (groupId, card) {
 			'</div>'+
 		'</div>';
 	defaultCard.innerHTML = html;
-	defaultCard.children[0].children[2].appendChild(modalIcon);
+	defaultCard.children[0].children[2].insertBefore(modalIcon, defaultCard.children[0].children[2].firstChild);
 	cardParent.appendChild(defaultCard);
         
 	// drag'n'drop	
@@ -84,10 +83,16 @@ function addCard (groupId, card) {
 }
 
 // delete card
-function removeCard(group, event) {
-	var target = event.target.parentNode.parentNode.parentNode.parentNode;
-	var cardParent = group.children[1];
-	cardParent.removeChild(target);
+function removeCard() {
+	var target = getCardRecursive(event.target);
+	target.remove();
+}
+
+function getCardRecursive(elem) {
+	if (elem.className === 'card') {
+		return elem;
+	}
+	return getCardRecursive(elem.parentNode);
 }
 
 //modal-window options
@@ -102,7 +107,7 @@ function openModal(data) {
 			'<form action="" onsubmit=submitForm()>'+
 				'<div class="header-popup">' +
 					'<h1>Card settings</h1>' +
-					'<button class=" btn close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>'+
+					'<button class="btn close-popup"><i class="fa fa-times" aria-hidden="true"></i></button>'+
 				'</div>' + 
 				'<div class="description-edit">' +
 					'<div class="progress-value">' +

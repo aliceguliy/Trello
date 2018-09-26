@@ -33,11 +33,8 @@ btnHolder[0].onclick = function() {
 };
 
 // delete group
-// var removeGroupIcon = contentBlock.children[0].children[0].children[1];
-// removeGroupIcon.addEventListener('click', removeGroup.bind(this, contentBlock));
-
 function removeGroup() { 
-	var target = getGroupRecursive(event.target);;
+	var target = getGroupRecursive(event.target);
 	target.remove();
 }
 

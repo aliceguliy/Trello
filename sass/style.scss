@@ -149,6 +149,7 @@ button {
 }
 
 .content { //was container in Natalia's Trello
+  position: relative;
   display: flex;
   align-items: flex-start;
   height: 100%;
@@ -323,28 +324,33 @@ button {
   }
 }
 
+.card-popup-holder {
+  position: absolute;
+  top: -35%;
+  left: 32%;
+}
+
 .card-popup {
-  top: 100px;
-  left: 50%;
+  position: relative;
+  top: -100px;
+  left: 5%;
   max-width: 600px;
   min-width: 350px;
   width: 100%;
-  transform: translate(-50%);
   background: rgba(252, 147, 147, 0.9);
-  z-index: 2;
   padding: 10px;
   border-radius: 6px;
 }
 
-.card-popup-holder:before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.6);
-}
+// .card-popup-holder:before {
+//   content: "";
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: rgba(0,0,0,0.6);
+// }
 
 .header-popup {
   margin: 0 0 8px;
@@ -353,41 +359,14 @@ button {
   align-items: center;
 }
 
-// .description .progress {
-//   width: 100%;
-// }
-
-// .description .info {
-//   margin: 0 0 10px;
-//   width: 100%;
-
-//   .relevance {
-//     width: 75px;
-//     height: 10px;
-//   }
-
-//   h2 {
-//     font-size: 25px;
-//   }
-// }
-
-// .description .info-block {
-//   font-size: 25px;
-
-//   p {
-//     margin: 10px;
-//   }
-// }
-
 .description-edit .progress-value {
-      width: 100%;
-      // padding: 5px;
-      margin-bottom: 8px; 
+  width: 100%;
+  margin-bottom: 8px; 
 
-      h2 {
-        margin: 0 0 5px 0;
-        font-size: 18px;
-      }
+  h2 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+  }
 }
 
 .progress-value input[type=range] {
