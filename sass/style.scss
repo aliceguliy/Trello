@@ -54,19 +54,6 @@ fieldset {
 header, footer, article,
 section, hgroup, nav, figure {display: block;}
 
-figure {
-  margin: 0;
-  padding: 0;
-}
-
-q {
-  quotes: none;
-
-  &:before,
-  &:after {
-    content: "";
-  }
-}
 
 input[type=text],
 input[type=checkbox],
@@ -88,6 +75,7 @@ button {
   padding: 10px;
 }
 
+
 .main-header {
   background: rgba(252, 147, 147, 0.7);
   padding: 8px;
@@ -95,397 +83,389 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .trello-menu,
+  .user-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } 
+
+  .search input[type=search] {
+    padding: 4px 6px;
+    height: 35px;
+    border: 0;
+    opacity: 0.5;
+    border-radius: 6px;
+  }
+    
+  .search input[type=button] {
+    width: 60px;
+    height: 35px;
+    margin: -3px;
+    border-radius: 6px;
+    background: #F52E46;
+    flex-shrink: 0;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3 ease;
+    text-transform: uppercase;
+  }
+    
+  .search input[type=button]:hover { 
+      background: #fff;
+      color: #F52E46; 
+  }
+
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
 }
 
-.trello-menu,
-.user-settings {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} 
-
-
-
-.search input[type=search] {
-	padding: 4px 6px;
-  height: 35px;
-  border: 0;
-  opacity: 0.5;
-  border-radius: 6px;
-}
-
-.search input[type=button] {
-  width: 60px;
-  height: 35px;
-  margin: -3px;
-  border-radius: 6px;
-	background: #F52E46;
-	flex-shrink: 0;
-	border: 0;
-	color: #fff;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.3 ease;
-	text-transform: uppercase;
-}
-
-.search input[type=button]:hover { 
-	  background: #fff;
-    color: #F52E46; 
-}
-
-.user-settings img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  margin-right: 15px;
-}
 
 .container { //was content in Natalia's Trello
   width: 100%;
   overflow: auto;
   height: calc(100vh - 80px);
   padding: 0 0 20px;
-}
 
-.content { //was container in Natalia's Trello
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  height: 100%;
-}
+  .content { //was container in Natalia's Trello
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
 
-.group,
-.add-group {
-  width: 300px;
-  padding: 10px;
-  border-radius: 6px;
-  background:  rgba(252, 147, 147, 0.7);
-  margin: 10px;
-  flex: 0 0 300px;
-  max-height: 100%;
-}
-
-.group {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-holder {
-  height: 100%;
-  overflow: auto;
-}
-
-.group:first-child {margin-left: 0;}
-.group:last-child {margin-right: 0;}
-
-.group-header {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card {
-  background: #fff;
-  margin: 0 0 10px; // or 10px
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
-  border-radius: 6px;
-}
-
-.card-header {
-  font-size: 20px;
-  // margin: 0 0 10px; // Need this?
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.info {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.info h2 {
-   margin: 0;
-}
-
-.relevance {
-  width: 35px;
-  height: 7px;
-  border-radius: 6px;
-  background: #0AA023;
-}
-
-.card-content {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-content img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-.add-card {
-  width: 100%;
-  display: block;
-  background: none;
-  padding: 0;
-  border: 0;
-  font-size: 18px;
-  text-align: left;
-  font-family: 'Dancing Script', cursive;
-}
-
-.add-group-description {
-  display: none;
-}
-
-.add-group-button {
-  background: none;
-  border: 0;
-  padding: 0;
-  text-align: left;
-  font-size: 25px;
-  font-family: 'Dancing Script', cursive;
-  font-weight: bold;
-}
-
-.add-group-edit .add-group-button {
-  display: none;
-}
-
-.add-group-edit .add-group-description {
-  display: block;
-}
-
-.add-group-description input[type=text],
-.info-value input[type=text],
-.card-content-value input[type=date] {
-  width: 100%;
-  background: #fff;
-  padding: 10px;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  outline: none;
-  display: block;
-  margin: 0 0 10px;
-}
-
-.add-group-description input[type=text]:focus,
-.card-content-value input[type=date]:focus,
-.info-block-value textarea:focus,
-.info-value input[type=text]:focus {
-  border: 2px solid #F52E46;
-}
-
-.btn {
-  background: #F52E46;
-  border-radius: 6px;
-  padding: 10px;
-  border: 0;
-  color: #fff;
-  font-weight: bold;
-}
-
-.btn-remove {
-  padding: 6px;
-}
-
-.btn:hover {
-  background: #fff;
-  color: #F52E46;
-}
-
-.btn-board-button {
-  margin-right: 5px;
-  background: #F52E46;
-  border-radius: 6px;
-  padding: 10px;
-  border: 0;
-  color: #fff;
-  font-weight: bold;
-
-  &:hover {
-    background: #fff;
-    color: #F52E46;
-  }
-}
-
-.card-popup-holder {
-  position: absolute;
-  top: -35%;
-  left: 32%;
-}
-
-.card-popup {
-  position: relative;
-  top: -100px;
-  left: 5%;
-  max-width: 600px;
-  min-width: 350px;
-  width: 100%;
-  background: rgba(252, 147, 147, 0.9);
-  padding: 10px;
-  border-radius: 6px;
-}
-
-// .card-popup-holder:before {
-//   content: "";
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background: rgba(0,0,0,0.6);
-// }
-
-.header-popup {
-  margin: 0 0 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.description-edit .progress-value {
-  width: 100%;
-  margin-bottom: 8px; 
-
-  h2 {
-    margin: 0 0 5px 0;
-    font-size: 18px;
-  }
-}
-
-.progress-value input[type=range] {
-    -webkit-appearance: none;
-    height: 10px;
-    padding: 0;
-    width: 100%;
-    border-radius: 6px;
-    outline : none;
-    background: #ac92ec;
-}
-
-.progress-value input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #76378B;
-    cursor: pointer;
-}
-
-.card-content-value {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-content-value input[type=date] {
-  width: 70%;
-  height: 35px;
-  margin: 0;
-}
-
-.info-block-value textarea {
-  border: 0;
-  border-radius: 6px;
-  width: 100%;
-  background: #fff;
-  margin: 8px auto;
-  padding: 0;
-  font-size: 15px;
-  line-height: 1.2;
-  resize: none;
-  height: 100px;
-  overflow: auto;
-  outline : none;
-}
-
-.description {
-  display: block;
-  font-size: 15px;
-  line-height: 1.2;
-}
-
-.description-edit {
-  display: block;
-}
-
-
-
-
-// progress bar
-.progress {
-  width: 70%;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.progress progress {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  left: -777px;
-}
-
-.progress-bar {
-  overflow: hidden;
-  background: #ac92ec;
-  width: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.progress-bg {
-  background: #e6e9ed;
-  position: relative;
-  height: 8px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-bar:after {
-  background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-  background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-  -webkit-background-size: 40px 40px;
-  background-size: 40px 40px;
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.progress progress[value="1"] + .progress-value:before {
-  content: "1%"; 
-}
-.progress progress[value="1"] ~ .progress-bg .progress-bar {
-  width: 1%; 
-}
-
-@for $i from 0 through 100 {
-    .progress progress[value="#{$i}"] {
-      & + .progress-value:before { content : '#{$i}%' }
-      & ~ .progress-bg .progress-bar { width: $i * 1% }
+    .group,
+    .add-group {
+      width: 300px;
+      padding: 10px;
+      border-radius: 6px;
+      background:  rgba(252, 147, 147, 0.7);
+      margin: 10px;
+      flex: 0 0 300px;
+      max-height: 100%;
     }
-} // end of progress bar
+
+    .add-group-description {
+      display: none;
+    }
+
+    .add-group-button {
+      background: none;
+      border: 0;
+      padding: 0;
+      text-align: left;
+      font-size: 25px;
+      font-family: 'Dancing Script', cursive;
+      font-weight: bold;
+    }
+
+    .add-group-edit .add-group-button {
+      display: none;
+    }
+
+    .add-group-edit .add-group-description {
+      display: block;
+    }
+
+    .add-group-description input[type=text],
+    .info-value input[type=text],
+    .card-content-value input[type=date] {
+      width: 100%;
+      background: #fff;
+      padding: 10px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      outline: none;
+      display: block;
+      margin: 0 0 10px;
+    }
+
+    .add-group-description input[type=text]:focus,
+    .card-content-value input[type=date]:focus,
+    .info-block-value textarea:focus,
+    .info-value input[type=text]:focus {
+      border: 2px solid #F52E46;
+    }
+
+    .group {
+      display: flex;
+      flex-direction: column;
+
+      &:first-child {margin-left: 0;}
+      &:last-child {margin-right: 0;}
+
+      .group-header {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-holder {
+        height: 100%;
+        overflow: auto;
+      }
+
+      .add-card {
+        width: 100%;
+        display: block;
+        background: none;
+        padding: 0;
+        border: 0;
+        font-size: 18px;
+        text-align: left;
+        font-family: 'Dancing Script', cursive;
+      }
+    } //end of group
+
+    .card {
+      background: #fff;
+      margin: 0 0 10px; // or 10px
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-content: stretch;
+      border-radius: 6px;
+
+      .card-header {
+        font-size: 20px;
+        // margin: 0 0 10px; // Need this?
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .info {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+           margin: 0;
+        }
+
+        .relevance {
+          width: 35px;
+          height: 7px;
+          border-radius: 6px;
+          background: #0AA023;
+        } 
+      } // end of info
+
+      .card-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+        }
+      }
+    } // end of card
+
+  .btn {
+    background: #F52E46;
+    border-radius: 6px;
+    padding: 10px;
+    border: 0;
+    color: #fff;
+    font-weight: bold;
+
+      &:hover {
+        background: #fff;
+        color: #F52E46;
+      }
+
+      &.remove {
+        padding: 6px;
+      }
+
+      &.board-button {
+        margin-right: 5px;
+        background: #F52E46;
+        border-radius: 6px;
+        padding: 10px;
+        border: 0;
+        color: #fff;
+        font-weight: bold;
+
+        &:hover {
+          background: #fff;
+          color: #F52E46;
+        }
+      }
+    } // end of btn
+
+    // progress bar
+    .progress {
+      width: 70%;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 10px;
+
+      progress {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        left: -777px;
+
+        &:[value="1"] + .progress-value:before {
+          content: "1%"; 
+        }
+
+        &:[value="1"] ~ .progress-bg .progress-bar {
+          width: 1%; 
+        }
+      }
+
+      .progress-bg {
+        background: #e6e9ed;
+        position: relative;
+        height: 8px;
+        border-radius: 5px;
+        overflow: hidden;
+
+        .progress-bar {
+          overflow: hidden;
+          background: #ac92ec;
+          width: 0;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          &:after {
+            background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+            background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+            background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+            -webkit-background-size: 40px 40px;
+            background-size: 40px 40px;
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      @for $i from 0 through 100 {
+        .progress progress[value="#{$i}"] {
+          & + .progress-value:before { content : '#{$i}%' }
+          & ~ .progress-bg .progress-bar { width: $i * 1% }
+        }
+      } 
+    } // end of progress bar
+
+    .card-popup-holder {
+      position: absolute;
+      top: -35%;
+      left: 32%;
+
+      // &:before {
+        //   content: "";
+        //   position: fixed;
+        //   top: 0;
+        //   left: 0;
+        //   right: 0;
+        //   bottom: 0;
+        //   background: rgba(0,0,0,0.6);
+      // }
+
+      .card-popup {
+        position: relative;
+        top: -100px;
+        left: 5%;
+        max-width: 600px;
+        min-width: 350px;
+        width: 100%;
+        background: rgba(252, 147, 147, 0.9);
+        padding: 10px;
+        border-radius: 6px;
+
+        .header-popup {
+          margin: 0 0 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .description-edit {
+          display: block;
+          
+          .progress-value {
+            width: 100%;
+            margin-bottom: 8px; 
+
+            h2 {
+              margin: 0 0 5px 0;
+              font-size: 18px;
+              line-height: 1.2;
+            }
+
+            input[type=range] {
+                -webkit-appearance: none;
+                height: 10px;
+                padding: 0;
+                width: 100%;
+                border-radius: 6px;
+                outline : none;
+                background: #ac92ec;
+            }
+
+            input[type=range]::-webkit-slider-thumb {
+              -webkit-appearance: none;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #76378B;
+                cursor: pointer;
+            }
+          }
+
+          .card-content-value {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            input[type=date] {
+              width: 70%;
+              height: 35px;
+              margin: 0;
+            }
+          }
+
+          .info-block-value textarea {
+            border: 0;
+            border-radius: 6px;
+            width: 100%;
+            background: #fff;
+            margin: 8px auto;
+            padding: 0;
+            font-size: 15px;
+            line-height: 1.2;
+            resize: none;
+            height: 100px;
+            overflow: auto;
+            outline : none;
+          }
+        }
+      } //end of card-popup
+    } //end of card-popup-holder
+  } //end of content
+} //end of container
