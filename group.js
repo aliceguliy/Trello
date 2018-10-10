@@ -13,11 +13,13 @@ function addGroup(group) {
 		title = group.title;
 		defaultGroup.id = group.id;
 	} 
-	defaultGroup.innerHTML = '<div class="group-header">' + title +
-								'<button class="btn btn-remove" onclick="removeGroup()"><i class="fa fa-times" aria-hidden="true"></i></button>' +'</div>' +
-								'<div class="card-holder"></div>' +
-								'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">' +
-								'<button class="add-card">+ Add card...</button>';
+	defaultGroup.innerHTML ='<div class="group-header">' + title +
+								'<button class="btn btn-remove" onclick="removeGroup()"><i class="fa fa-times" aria-hidden="true"></i></button>' +
+							'</div>' +
+							'<div class="card-holder"></div>' +
+							'<div class="group-footer" onclick="addCard(' + defaultGroup.id + ')">' +
+								'<button class="add-card">+ Add card...</button>' + 
+							'</div>';
 	contentBlock.insertBefore(defaultGroup, addNewGroup);
 }
 

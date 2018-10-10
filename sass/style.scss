@@ -212,8 +212,7 @@ button {
       .card-holder {
         height: 100%;
         overflow: auto;
-      }
-
+        
       .add-card {
         width: 100%;
         display: block;
@@ -424,12 +423,12 @@ button {
                 padding: 0;
                 width: 100%;
                 border-radius: 6px;
-                outline : none;
+                outline: none;
                 background: #ac92ec;
             }
 
             input[type=range]::-webkit-slider-thumb {
-              -webkit-appearance: none;
+                -webkit-appearance: none;
                 width: 15px;
                 height: 15px;
                 border-radius: 50%;
